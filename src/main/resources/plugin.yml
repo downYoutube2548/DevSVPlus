@@ -1,0 +1,7 @@
+name: DevSVPlus
+version: '${version}'
+main: com.downyoutube.devsvplus.devsvplus.DevSVPlus
+api-version: 1.19
+commands:
+  character:
+    permission: character.use

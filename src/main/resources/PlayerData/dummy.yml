@@ -1,0 +1,8 @@
+name: "dummy"
+characters:
+  - "AYAKA"
+  - "HELLO"
+skill-bound:
+  ROGUE:
+    active: "DEEP_WOUND;WEAKEN;EMPOWERED_ATTACK;COMBO_ATTACK;EVADE"
+    passive: "SNEAKY_PICKY"

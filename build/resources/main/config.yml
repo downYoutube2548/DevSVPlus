@@ -1,0 +1,38 @@
+gui:
+  title: "§f"
+  character-list-button:
+    lore:
+      - "%description%"
+      - ""
+      - "&eเลเวล &f%level%/%max-level%"
+      - ""
+      - "&eคลิกเพื่อเลือก"
+    activated-lore:
+      - "%description%"
+      - ""
+      - "&eเลเวล &f%level%/%max-level%"
+      - ""
+      - "&aกำลังใช้งาน"
+  previous-button:
+    material: ARROW
+    model: 0
+    name: "&ePrevious"
+    lore: []
+  next-button:
+    material: ARROW
+    model: 0
+    name: "&eNext"
+    lore: []
+
+skill-bound:
+  ROGUE:
+    active: "DEEP_WOUND;WEAKEN;EMPOWERED_ATTACK;COMBO_ATTACK;EVADE"
+    passive: "SNEAKY_PICKY"
+  MARKSMAN:
+    active: EVADE;EVADE;EVADE;EVADE;EVADE
+
+message:
+  change-character: "&fคุณเปลี่ยนคลาสเป็น &a%character% &f"
+  change-character-title: "&a%character%"
+  change-character-sub-title: "กด &8[&aF &8] &fเพื่อใช้งานสกิล"
+
