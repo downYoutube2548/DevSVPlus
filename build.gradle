@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'com.downyoutube.devsvplus'
-version = '9.9.9.9.9.9.9.9.9.9.9.9.9.9.9'
+version = '2.0'
 
 libsDirName = '../../../Desktop/Server/Test Server 1.19.4/plugins'
 
