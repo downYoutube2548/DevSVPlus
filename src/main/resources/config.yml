@@ -25,11 +25,8 @@ gui:
     lore: []
 
 skill-bound:
-  ROGUE:
-    active: "DEEP_WOUND;WEAKEN;EMPOWERED_ATTACK;COMBO_ATTACK;EVADE"
-    passive: "SNEAKY_PICKY"
-  MARKSMAN:
-    active: EVADE;EVADE;EVADE;EVADE;EVADE
+  ROGUE: "DEEP_WOUND;WEAKEN;EMPOWERED_ATTACK;COMBO_ATTACK;EVADE"
+  MARKSMAN: EVADE;EVADE;EVADE;EVADE;EVADE
 
 message:
   change-character: "&fคุณเปลี่ยนคลาสเป็น &a%character% &f"

@@ -5,17 +5,11 @@ import com.downyoutube.devsvplus.devsvplus.YamlLoader.SaveFile;
 import com.downyoutube.devsvplus.devsvplus.event.LoadData;
 import com.downyoutube.devsvplus.devsvplus.event.SkillMode;
 import com.downyoutube.devsvplus.devsvplus.ui.CharacterInteraction;
-import com.google.common.io.ByteStreams;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;

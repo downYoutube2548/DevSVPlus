@@ -5,7 +5,6 @@ import net.Indyuce.mmocore.MMOCore;
 import net.Indyuce.mmocore.api.player.PlayerData;
 import net.Indyuce.mmocore.api.player.profess.PlayerClass;
 import net.Indyuce.mmocore.api.player.profess.SavedClassInformation;
-import net.Indyuce.mmocore.skill.ClassSkill;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

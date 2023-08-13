@@ -1,13 +1,10 @@
 package com.downyoutube.devsvplus.devsvplus;
 
-import io.lumine.mythic.lib.MythicLib;
-import io.lumine.mythic.lib.player.skill.PassiveSkill;
 import net.Indyuce.mmocore.MMOCore;
 import net.Indyuce.mmocore.api.event.PlayerChangeClassEvent;
 import net.Indyuce.mmocore.api.player.PlayerData;
 import net.Indyuce.mmocore.api.player.profess.PlayerClass;
 import net.Indyuce.mmocore.api.player.profess.SavedClassInformation;
-import net.Indyuce.mmocore.skill.ClassSkill;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -87,31 +84,6 @@ public class Utils {
 
     public static void setClass(Player player, PlayerClass new_character) {
         PlayerData data = PlayerData.get(player);
-        PlayerClass old_character = data.getProfess();
-
-
-        /*
-        // active bound skill
-        if (data.getBoundSkills().size() >= 1) {
-            StringBuilder active_skill_bound_string = new StringBuilder();
-            for (ClassSkill skill : data.getBoundSkills()) {
-                active_skill_bound_string.append(skill.getSkill().getHandler().getId()).append(";");
-            }
-            String active_skill_bound = active_skill_bound_string.substring(0, active_skill_bound_string.length() - 1);
-            DevSVPlus.data.get(player.getUniqueId()).set("skill-bound." + old_character.getId().toUpperCase() + ".active", active_skill_bound);
-        }
-
-        // passive bound skill
-        if (data.getBoundPassiveSkills().size() >= 1) {
-            StringBuilder passive_skill_bound_string = new StringBuilder();
-            for (PassiveSkill skill : data.getBoundPassiveSkills()) {
-                passive_skill_bound_string.append(skill.getTriggeredSkill().getHandler().getId()).append(";");
-            }
-            String passive_skill_bound = passive_skill_bound_string.substring(0, passive_skill_bound_string.length() - 1);
-            DevSVPlus.data.get(player.getUniqueId()).set("skill-bound." + old_character.getId().toUpperCase() + ".passive", passive_skill_bound);
-        }
-
-         */
 
         // set class
         PlayerChangeClassEvent called = new PlayerChangeClassEvent(data, new_character);
@@ -125,62 +97,15 @@ public class Utils {
             data.unbindSkill(0);
         }
 
-        while (data.getBoundPassiveSkills().size() > 0) {
-            data.unbindPassiveSkill(0);
+
+        if (DevSVPlus.main.getConfig().contains("skill-bound." + new_character.getId())) {
+            int i = 1;
+            for (String s : Objects.requireNonNull(DevSVPlus.main.getConfig().getString("skill-bound." + new_character.getId())).split(";")) {
+                if (new_character.getSkill(s) == null) continue;
+                data.bindSkill(i-1, new_character.getSkill(s));
+                i++;
+            }
         }
-
-
-        // load bound skill
-        //if (data.getBoundSkills().size() == 0) {
-            /*
-            if (DevSVPlus.data.get(player.getUniqueId()).contains("skill-bound." + new_character.getId() + ".active")) {
-                int i = 1;
-                for (String s : Objects.requireNonNull(DevSVPlus.data.get(player.getUniqueId()).getString("skill-bound." + new_character.getId() + ".active")).split(";")) {
-                    if (new_character.getSkill(s) == null) continue;
-                    data.bindActiveSkill(i, new_character.getSkill(s));
-                    i++;
-                }
-            }
-
-             */
-
-
-            if (DevSVPlus.main.getConfig().contains("skill-bound." + new_character.getId() + ".active")) {
-                int i = 1;
-                for (String s : Objects.requireNonNull(DevSVPlus.main.getConfig().getString("skill-bound." + new_character.getId() + ".active")).split(";")) {
-                    if (new_character.getSkill(s) == null) continue;
-                    data.bindActiveSkill(i-1, new_character.getSkill(s));
-                    i++;
-                }
-            }
-
-
-        //}
-
-        //if (data.getBoundPassiveSkills().size() == 0) {
-            /*
-            if (DevSVPlus.data.get(player.getUniqueId()).contains("skill-bound." + new_character.getId() + ".passive")) {
-                int i = 1;
-                for (String s : Objects.requireNonNull(DevSVPlus.data.get(player.getUniqueId()).getString("skill-bound." + new_character.getId() + ".passive")).split(";")) {
-                    if (new_character.getSkill(s) == null || new_character.getSkill(s).toPassive(data) == null) continue;
-                    data.bindPassiveSkill(i, new_character.getSkill(s).toPassive(data));
-                    i++;
-                }
-            }
-            */
-
-            if (DevSVPlus.main.getConfig().contains("skill-bound." + new_character.getId() + ".passive")) {
-                int i = 1;
-                for (String s : Objects.requireNonNull(DevSVPlus.main.getConfig().getString("skill-bound." + new_character.getId() + ".passive")).split(";")) {
-                    if (new_character.getSkill(s) == null || new_character.getSkill(s).toPassive(data) == null)
-                        continue;
-                    data.bindPassiveSkill(i, new_character.getSkill(s).toPassive(data));
-                    i++;
-                }
-            }
-        //}
-
-
     }
 
     public static List<String> tabComplete(String a, List<String> arg) {

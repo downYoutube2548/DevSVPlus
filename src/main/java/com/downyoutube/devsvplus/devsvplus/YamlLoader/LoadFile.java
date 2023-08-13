@@ -4,7 +4,8 @@ import com.downyoutube.devsvplus.devsvplus.DevSVPlus;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 
